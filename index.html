@@ -3,7 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小鸡说AI - 智能营销获客神器</title>
+    <title>小鸡说AI - 智能营销获客神器</title>    
+    <!-- 百度统计 -->
+    <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?310c2e7b448e884de133a433529c1692";
+      var s = document.getElementsByTagName("script")[0]; 
+      s.parentNode.insertBefore(hm, s);
+    })();
+    </script>
+
     <style>
         * {
             margin: 0;
@@ -1468,20 +1479,20 @@
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>靈感引擎</h3>
-                        <p>一鍵搜索全網各行業爆款內容，自動提煉爆款元素與素材，徹底告別靈感枯竭</p>
+                        <p>一键搜索全网各行业爆款内容，自动提炼爆款元素与素材，彻底告别灵感枯竭</p>
                     </div>
                 </div>
 
-                <div class="feature-card">
+                <div 类="特色卡片">
                     <div class="feature-card-content">
-                        <h3>一鍵爆款克隆</h3>
-                        <p>複製同行爆款鏈接，AI智能分析標題、框架與關鍵詞，一鍵生成高轉化原創內容</p>
+                        <h3>一键爆款克隆</h3>
+                        <p>复制同行爆款链接，AI智能分析标题、框架与关键词，一键生成高转化原创内容</p>
                     </div>
                 </div>
 
-                <div class="feature-card">
+                <div 类="特色卡片">
                     <div class="feature-card-content">
-                        <h3>AI智能生圖</h3>
+                        <h3>AI智能生图</h3>
                         <p>不會設計也能做爆款。只需一句文案，AI模型自動為你生成多張高清原創配圖</p>
                     </div>
                 </div>
@@ -1523,5 +1534,50 @@
             </div>
         </div>
     </main>
-</body>
-</html>
+</body>    
+    <!-- 自定义用户行为追踪 -->
+    <script>
+    (function() {
+        function trackWhatsAppClick() {
+            if (window._hmt) _hmt.push(['_trackEvent', '按钮点击', 'WhatsApp', '联系客服']);
+            console.log('[Analytics] WhatsApp按钮被点击');
+        }
+        
+        function trackLineClick() {
+            if(window._hmt)_hmt.push(['_trackEvent','按钮点击','LINE','联系客服']);  
+            控制台.日志('[分析] 线按钮被点击');
+        }
+        
+        var startTime = Date.now();
+        窗口.添加事件监听器('beforeunload', 函数() {
+            var timeSpent = Math.round((Date.now() - startTime) / 1000);
+             (窗口_hmt 且 时间花费 > 3) {
+                _hmt.push(['_trackEvent', '用户行为', '停留时间', '秒', timeSpent]);
+            }
+        });
+        
+        滚动跟踪 =  {};
+        窗口.addEventListener('滚动', 函数() {
+            var scrollPercent = Math.round((窗口.滚动Y / (文档.文档元素.滚动高度 - 窗口.内部高度))100)
+            [25, 50, 75, 100].forEach(function( {
+                如果 (滚动百分比 >= 里程碑 && !滚动已跟踪[里程碑]) {
+                    滚动跟踪[里程碑] = 真
+                    ifwindow) _hmt.push(['_trackEvent','用户行为','滚动深度', milestone + '%']);
+                }
+            });
+        });
+        
+        窗口.添加事件监听器('DOMContentLoaded', 函数() {
+            文档.querySelectorAll('a[href*="wa.me"]').forEach(函数(按钮) {
+                btn.addEventListener('click', trackWhatsAppClick);
+            });
+            文档querySelectorAll('a[href*="line.me"]').forEach(函数(按钮) {
+                btn.addEventListener('click', trackLineClick);
+            });
+            控制台.日志('[分析] 用户行为追踪已启动');
+        });
+    })();
+    </脚本
+
+
+
