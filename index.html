@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小鸡说AI - 智能营销获客神器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* 顶部Logo区域 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(233, 30, 99, 0.2);
+            box-shadow: 0 5px 30px rgba(233, 30, 99, 0.1);
+        }
+
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            position: relative;
+        }
+
+        /* 炫酷背景光效 */
+        .logo-container::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.15) 0%, transparent 70%);
+            animation: logoGlowPulse 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes logoGlowPulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.3;
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.2);
+                opacity: 0.6;
+            }
+        }
+
+        /* Logo图片 - 超级炫酷效果 */
+        .logo-image {
+            height: 100px;
+            width: auto;
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+            filter: drop-shadow(0 0 20px rgba(233, 30, 99, 0.4));
+            position: relative;
+            z-index: 1;
+            animation: logoFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes logoFloat {
+            0%, 100% { 
+                transform: translateY(0px);
+            }
+            50% { 
+                transform: translateY(-8px);
+            }
+        }
+
+        .logo-image:hover {
+            transform: scale(1.1) translateY(-5px);
+            filter: drop-shadow(0 0 40px rgba(233, 30, 99, 0.8)) 
+                    drop-shadow(0 0 60px rgba(233, 30, 99, 0.6))
+                    drop-shadow(0 0 80px rgba(233, 30, 99, 0.4));
+            animation: logoSpin 0.8s ease-in-out;
+        }
+
+        @keyframes logoSpin {
+            0% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.15) rotate(5deg); }
+            100% { transform: scale(1.1) rotate(0deg); }
+        }
+
+        /* 粒子效果容器 */
+        .logo-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #E91E63;
+            border-radius: 50%;
+            opacity: 0;
+            animation: particleFloat 3s ease-in-out infinite;
+        }
+
+        .particle:nth-child(1) {
+            left: 20%;
+            animation-delay: 0s;
+        }
+
+        .particle:nth-child(2) {
+            left: 40%;
+            animation-delay: 0.5s;
+        }
+
+        .particle:nth-child(3) {
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        .particle:nth-child(4) {
+            left: 80%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes particleFloat {
+            0% {
+                bottom: 0;
+                opacity: 0;
+                transform: translateX(0) scale(0);
+            }
+            20% {
+                opacity: 1;
+                transform: translateX(10px) scale(1);
+            }
+            80% {
+                opacity: 1;
+                transform: translateX(-10px) scale(1);
+            }
+            100% {
+                bottom: 100%;
+                opacity: 0;
+                transform: translateX(0) scale(0);
+            }
+        }
+
+        /* 扫描线效果 */
+        .logo-scanline {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(233, 30, 99, 0.8) 50%, 
+                transparent 100%);
+            animation: scanline 3s ease-in-out infinite;
+        }
+
+        @keyframes scanline {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* 主要内容区域 */
+        .main-content {
+            margin-top: 100px;
+            padding: 20px 20px 60px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* 英雄区域 */
+        .hero-section {
+            text-align: center;
+            padding: 20px 20px 60px;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: 48px;
+            color: #fff;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 30px;
+        }
+
+        /* 2. 痛点文案 - 繁体字，小一点 */
+        .hero-pain-text {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .auto-atm {
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 19px;
+        }
+
+        /* 3. 解决方案框 - 绿色 */
+        .hero-solution-box {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            padding: 40px;
+            background: rgba(74, 222, 128, 0.1);
+            border: 2px solid rgba(74, 222, 128, 0.3);
+            border-radius: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .solution-text {
+            font-size: 22px;
+            color: #4ADE80;
+            font-weight: 600;
+            line-height: 2;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.3);
+        }
+
+        .solution-text:last-child {
+            margin-bottom: 0;
+        }
+
+        .brand-highlight {
+            color: #E91E63;
+            font-weight: 900;
+            font-size: 26px;
+            background: linear-gradient(135deg, #E91E63, #FF4081);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(233, 30, 99, 0.5);
+        }
+
+        /* 手机展示区域 - 英雄区 */
+        .phone-showcase-hero {
+            position: relative;
+            max-width: 900px;
+            height: 320px;
+            margin: 60px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-wrapper {
+            position: absolute;
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+
+        .phone-display {
+            width: 100%;
+            height: auto;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        /* 左侧手机 - 更大，宽屏 */
+        .phone-left {
+            left: 50%;
+            transform: translateX(-50%) translateX(-120px);
+            z-index: 2;
+            width: 320px;
+        }
+
+        .phone-left:hover {
+            transform: translateX(-50%) translateX(-120px) scale(1.05) translateY(-10px);
+            z-index: 3;
+        }
+
+        .phone-left:hover .phone-display {
+            box-shadow: 0 30px 80px rgba(233, 30, 99, 0.5);
+        }
+
+        /* 右侧手机 - 更大，宽屏，重叠在右侧 */
+        .phone-right {
+            left: 50%;
+            transform: translateX(-50%) translateX(60px);
+            z-index: 1;
+            width: 280px;
+        }
+
+        .phone-right:hover {
+            transform: translateX(-50%) translateX(60px) scale(1.1) translateY(-10px);
+            z-index: 3;
+        }
+
+        .phone-right:hover .phone-display {
+            box-shadow: 0 30px 80px rgba(74, 222, 128, 0.5);
+        }
+
+        /* 当悬停左侧时，右侧缩小 */
+        .phone-showcase-hero:has(.phone-left:hover) .phone-right {
+            transform: scale(0.9);
+            opacity: 0.7;
+        }
+
+        /* 当悬停右侧时，左侧缩小 */
+        .phone-showcase-hero:has(.phone-right:hover) .phone-left {
+            transform: translateX(-50%) translateX(-120px) scale(0.95);
+            opacity: 0.7;
+        }
+
+        /* CTA转化区域 - 整体框 */
+        .hero-cta-box {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px 40px;
+            background: linear-gradient(135deg, rgba(233, 30, 99, 0.1), rgba(74, 222, 128, 0.1));
+            border: 2px solid rgba(233, 30, 99, 0.3);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(233, 30, 99, 0.05) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .hero-cta-box > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: 36px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #4a4a4a 50%, #1a1a1a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 900;
+            margin-bottom: 15px;
+            text-shadow: none;
+        }
+
+        .cta-subtitle {
+            font-size: 22px;
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .cta-description {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .cta-action {
+            font-size: 20px;
+            color: #4ADE80;
+            margin-bottom: 35px;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.4);
+            padding: 20px 30px;
+            border: 2px solid #4ADE80;
+            border-radius: 15px;
+            background: rgba(74, 222, 128, 0.05);
+            display: inline-block;
+        }
+
+        .hero-cta-text {
+            font-size: 28px;
+            color: #4ADE80;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 0 0 30px rgba(74, 222, 128, 0.6);
+        }
+
+        .hero-contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+
+        .hero-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 22px 50px;
+            background: #4ADE80;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 60px;
+            font-size: 20px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 35px rgba(74, 222, 128, 0.4);
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(74, 222, 128, 0.6);
+            background: #3BC970;
+        }
+
+        .hero-btn-icon {
+            font-size: 26px;
+            margin-right: 15px;
+        }
+
+        .hero-btn-text {
+            font-size: 20px;
+        }
+
+        .hero-footer {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 25px;
+        }
+
+        /* 标题区域 */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        /* 手机展示区域 */
+        .phone-showcase {
+            position: relative;
+            max-width: 1200px;
+            margin: 80px auto;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 1500px;
+        }
+
+        /* 手机模型 - 更真实的设计 */
+        .phone-mockup {
+            position: absolute;
+            width: 360px;
+            height: 720px;
+            background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+            border-radius: 45px;
+            padding: 15px;
+            box-shadow: 
+                0 50px 100px rgba(0, 0, 0, 0.6),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+            transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+            animation: phoneZoomIn 1s ease-out forwards;
+        }
+
+        @keyframes phoneZoomIn {
+            0% {
+                transform: scale(0.3);
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* 第一部手机 - 左侧，更大更突出 */
+        .phone-mockup:nth-child(1) {
+            left: 50%;
+            transform: translateX(-50%) translateX(-250px) rotateY(20deg) rotateZ(-3deg) scale(1.05);
+            z-index: 2;
+            animation-delay: 0s;
+        }
+
+        .phone-mockup:nth-child(1):hover {
+            transform: translateX(-50%) translateX(-250px) rotateY(15deg) rotateZ(-2deg) scale(1.1);
+            z-index: 3;
+        }
+
+        /* 第二部手机 - 右侧，更小，重叠在第一部上方 */
+        .phone-mockup:nth-child(2) {
+            left: 50%;
+            transform: translateX(-50%) translateX(100px) rotateY(-15deg) rotateZ(2deg) scale(0.85);
+            z-index: 1;
+            animation-delay: 0.3s;
+        }
+
+        .phone-mockup:nth-child(2):hover {
+            transform: translateX(-50%) translateX(100px) rotateY(-10deg) rotateZ(1deg) scale(0.9);
+            z-index: 3;
+        }
+
+        /* 手机刘海 */
+        .phone-notch {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 25px;
+            background: #1a1a1a;
+            border-radius: 0 0 15px 15px;
+            z-index: 10;
+        }
+
+        /* 手机屏幕 */
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+            border-radius: 35px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 手机顶部状态栏 */
+        .phone-status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 35px 25px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a1a1a;
+            background: transparent;
+        }
+
+        /* 手机内容区域 */
+        .phone-content {
+            padding: 20px;
+            background: #f5f5f5;
+            height: calc(100% - 60px);
+            position: relative;
+        }
+
+        .phone-content h3 {
+            font-size: 24px;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        /* 手机内的卡片 - 更精致的设计 */
+        .phone-card {
+            background: linear-gradient(135deg, #E91E63 0%, #FF4081 100%);
+            border-radius: 20px;
+            padding: 30px 25px;
+            margin-bottom: 20px;
+            color: #fff;
+            box-shadow: 0 15px 35px rgba(233, 30, 99, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .phone-card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .phone-card-subtitle {
+            font-size: 15px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 弹出窗口 - 更精致的设计 */
+        .popup-window {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0);
+            width: 88%;
+            background: #fff;
+            border-radius: 25px;
+            padding: 30px 25px;
+            box-shadow: 
+                0 30px 80px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(0, 0, 0, 0.05);
+            animation: popupAppear 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards 2s;
+            z-index: 10;
+        }
+
+        @keyframes popupAppear {
+            0% {
+                transform: translate(-50%, -50%) scale(0);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .popup-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+
+        .popup-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+
+        .popup-close {
+            font-size: 22px;
+            color: #999;
+            cursor: pointer;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: #f5f5f5;
+        }
+
+        .popup-content {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .popup-content:hover {
+            background: #f0f0f0;
+        }
+
+        .popup-icon {
+            width: 55px;
+            height: 55px;
+            background: #E91E63;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+            box-shadow: 0 8px 20px rgba(233, 30, 99, 0.3);
+        }
+
+        .popup-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .popup-text h4 {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin-bottom: 5px;
+        }
+
+        .popup-text p {
+            font-size: 14px;
+            color: #666;
+        }
+
+        .popup-arrow {
+            color: #E91E63;
+            font-size: 24px;
+            font-weight: 300;
+        }
+
+        /* 手机展示背景装饰 */
+        .section-title::before {
+            content: '📱';
+            position: absolute;
+            font-size: 200px;
+            opacity: 0.03;
+            top: -80px;
+            left: 10%;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .section-title::after {
+            content: '📱';
+            position: absolute;
+            font-size: 180px;
+            opacity: 0.03;
+            top: -60px;
+            right: 15%;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite 3s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FF6B6B 0%, #FFD93D 25%, #6BCF7F 50%, #4ECDC4 75%, #A78BFA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradientShift 3s ease infinite;
+            background-size: 200% 200%;
+            text-shadow: 0 0 40px rgba(255, 107, 107, 0.3);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* 卡片网格布局 - 改为单列 */
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 80px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* 卡片样式 */
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(74, 222, 128, 0.2);
+            border-radius: 20px;
+            padding: 35px 40px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-start;
+            gap: 25px;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4ADE80, #22C55E);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(74, 222, 128, 0.5);
+            box-shadow: 0 20px 40px rgba(74, 222, 128, 0.2);
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card-content {
+            flex: 1;
+        }
+
+        .feature-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #4ADE80;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* 图标样式 - 删除 */
+
+        /* CTA按钮区域 */
+        .cta-section {
+            text-align: center;
+            padding: 60px 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(233, 30, 99, 0.2);
+            border-radius: 30px;
+            margin: 60px 0;
+        }
+
+        .cta-main-title {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 30px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .pain-points {
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .pain-points p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            margin-bottom: 12px;
+        }
+
+        .pain-points p:last-child {
+            margin-bottom: 0;
+        }
+
+        .pain-points .highlight-text {
+            color: #FFD700;
+            font-size: 20px;
+            margin: 20px 0;
+            font-weight: 600;
+        }
+
+        .pain-points strong {
+            color: #E91E63;
+            font-weight: 700;
+        }
+
+        .cta-header h3 {
+            font-size: 24px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 10px;
+            font-weight: 400;
+        }
+
+        .cta-subtitle {
+            font-size: 22px;
+            color: #4ADE80;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(74, 222, 128, 0.5);
+        }
+
+        .contact-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px 40px;
+            background: #4ADE80;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(74, 222, 128, 0.3);
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(74, 222, 128, 0.5);
+            background: #3BC970;
+        }
+
+        .btn-icon {
+            font-size: 24px;
+            margin-right: 12px;
+        }
+
+        .btn-text {
+            font-size: 18px;
+        }
+
+        .cta-footer {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 30px;
+        }
+
+        /* 悬浮联系按钮 - 移除 */
+        .floating-contact {
+            display: none;
+        }
+
+        /* 悬浮联系按钮 */
+        .floating-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 999;
+        }
+
+        .contact-trigger {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #E91E63, #FF4081);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 10px 30px rgba(233, 30, 99, 0.5);
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .contact-trigger:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 40px rgba(233, 30, 99, 0.7);
+        }
+
+        .contact-trigger svg {
+            width: 28px;
+            height: 28px;
+            fill: #fff;
+        }
+
+        /* 联系方式弹出面板 */
+        .contact-panel {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            background: rgba(26, 26, 46, 0.98);
+            border: 1px solid rgba(233, 30, 99, 0.3);
+            border-radius: 20px;
+            padding: 25px;
+            min-width: 280px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        .contact-panel.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .contact-panel h3 {
+            font-size: 18px;
+            color: #E91E63;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .contact-option {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(233, 30, 99, 0.2);
+            border-radius: 12px;
+            margin-bottom: 12px;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .contact-option:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-option:hover {
+            background: rgba(233, 30, 99, 0.1);
+            border-color: rgba(233, 30, 99, 0.5);
+            transform: translateX(-5px);
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #E91E63, #FF4081);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 20px;
+        }
+
+        .contact-info {
+            flex: 1;
+        }
+
+        .contact-info .label {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 2px;
+        }
+
+        .contact-info .value {
+            font-size: 16px;
+            font-weight: 600;
+            color: #fff;
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 28px;
+                margin-bottom: 20px;
+            }
+
+            .hero-pain-text {
+                font-size: 16px;
+                margin-bottom: 30px;
+                padding: 0 10px;
+            }
+
+            .auto-atm {
+                font-size: 17px;
+            }
+
+            .hero-solution-box {
+                padding: 25px 20px;
+                margin-bottom: 30px;
+            }
+
+            .solution-text {
+                font-size: 18px;
+                line-height: 1.8;
+            }
+
+            .brand-highlight {
+                font-size: 20px;
+            }
+
+            .phone-showcase-hero {
+                height: 250px;
+                margin: 40px auto;
+                max-width: 100%;
+                padding: 0 10px;
+            }
+
+            .phone-left {
+                left: 50%;
+                transform: translateX(-50%) translateX(-60px);
+                width: 150px;
+            }
+
+            .phone-right {
+                left: 50%;
+                transform: translateX(-50%) translateX(30px);
+                width: 140px;
+            }
+
+            /* 移动端LINE按钮文字换行 */
+            .hero-btn-text-line {
+                display: block;
+                line-height: 1.3;
+            }
+
+            .hero-cta-box {
+                padding: 30px 20px;
+                margin: 0 10px;
+            }
+
+            .cta-title {
+                font-size: 26px;
+                margin-bottom: 12px;
+            }
+
+            .cta-subtitle {
+                font-size: 18px;
+                margin-bottom: 15px;
+            }
+
+            .cta-description {
+                font-size: 16px;
+                margin-bottom: 20px;
+            }
+
+            .cta-action {
+                font-size: 17px;
+                margin-bottom: 25px;
+            }
+
+            .hero-cta-text {
+                font-size: 20px;
+                margin-bottom: 30px;
+            }
+
+            .hero-contact-buttons {
+                padding: 0 10px;
+                gap: 15px;
+            }
+
+            .hero-btn {
+                padding: 18px 35px;
+                font-size: 17px;
+            }
+
+            .hero-btn-icon {
+                font-size: 22px;
+            }
+
+            .hero-btn-text {
+                font-size: 17px;
+            }
+
+            .hero-footer {
+                font-size: 14px;
+            }
+
+            .phone-showcase {
+                min-height: 650px;
+                padding: 0 20px;
+            }
+
+            .phone-mockup {
+                width: 300px;
+                height: 600px;
+            }
+
+            .phone-mockup:nth-child(1) {
+                transform: translateX(-50%) translateX(-150px) rotateY(15deg) rotateZ(-2deg) scale(0.95);
+            }
+
+            .phone-mockup:nth-child(1):hover {
+                transform: translateX(-50%) translateX(-150px) rotateY(10deg) rotateZ(-1deg) scale(1);
+            }
+
+            .phone-mockup:nth-child(2) {
+                transform: translateX(-50%) translateX(60px) rotateY(-10deg) rotateZ(1deg) scale(0.75);
+            }
+
+            .phone-mockup:nth-child(2):hover {
+                transform: translateX(-50%) translateX(60px) rotateY(-5deg) rotateZ(0deg) scale(0.8);
+            }
+
+            .popup-window {
+                width: 90%;
+                padding: 25px 20px;
+            }
+
+            .popup-title {
+                font-size: 18px;
+            }
+
+            .popup-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 22px;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .section-title p {
+                font-size: 16px;
+            }
+
+            .cards-grid {
+                gap: 20px;
+            }
+
+            .feature-card {
+                padding: 25px 20px;
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .cta-button {
+                display: block;
+                margin: 10px auto;
+                max-width: 300px;
+            }
+
+            .contact-buttons {
+                padding: 0 10px;
+            }
+
+            .contact-btn {
+                padding: 16px 30px;
+                font-size: 16px;
+            }
+
+            .btn-text {
+                font-size: 16px;
+            }
+
+            .cta-main-title {
+                font-size: 26px;
+                line-height: 1.5;
+                margin-bottom: 20px;
+            }
+
+            .pain-points {
+                padding: 20px;
+            }
+
+            .pain-points p {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            .pain-points .highlight-text {
+                font-size: 17px;
+                margin: 15px 0;
+            }
+
+            .cta-header h3 {
+                font-size: 20px;
+            }
+
+            .cta-subtitle {
+                font-size: 18px;
+            }
+
+            .floating-contact {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .contact-trigger {
+                width: 55px;
+                height: 55px;
+            }
+
+            .contact-panel {
+                right: -10px;
+                min-width: 260px;
+            }
+        }
+
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feature-card {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .feature-card:nth-child(1) { animation-delay: 0.1s; }
+        .feature-card:nth-child(2) { animation-delay: 0.2s; }
+        .feature-card:nth-child(3) { animation-delay: 0.3s; }
+        .feature-card:nth-child(4) { animation-delay: 0.4s; }
+        .feature-card:nth-child(5) { animation-delay: 0.5s; }
+        .feature-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- 顶部Logo -->
+    <header class="header">
+        <div class="logo-container">
+            <!-- 粒子效果 -->
+            <div class="logo-particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+            </div>
+            <!-- 扫描线效果 -->
+            <div class="logo-scanline"></div>
+            <!-- 完整Logo：图标 + 小鸡说AI + XIAOJIAI -->
+            <img src="xiaoji-logo.svg" alt="小鸡说AI Logo" class="logo-image">
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="main-content">
+        <div class="container">
+            <!-- 英雄区域 - 痛点展示 -->
+            <section class="hero-section">
+                <!-- 1. 主标题 - 白色加粗 -->
+                <h1 class="hero-title">你的同行，正在用 AI<br>偷偷「偷走」你的客户！</h1>
+                
+                <!-- 2. 痛点文案 - 繁体字，小一点 -->
+                <p class="hero-pain-text">當你還在為了憋一條文案抓耳撓腮<br>為了一條短片熬夜剪輯修圖時<br>你的同行早就開啟<br><strong class="auto-atm">「自動提款機」</strong>模式</p>
+                
+                <!-- 3. 解决方案 - 繁体字，绿色 -->
+                <div class="hero-solution-box">
+                    <p class="solution-text">他們正用 <span class="brand-highlight">小雞AI</span><br>一鍵克隆全網的爆款基因<br>每天全自動生成圖文和短片<br>幾十個矩陣帳號在各大平台瘋狂鋪量！</p>
+                </div>
+
+                <!-- 手机展示区域 - 左大右小重叠 -->
+                <div class="phone-showcase-hero">
+                    <div class="phone-wrapper phone-left">
+                        <img src="phone-screen-1.svg" alt="創作中心界面" class="phone-display">
+                    </div>
+                    <div class="phone-wrapper phone-right">
+                        <img src="phone-screen-2.svg" alt="發布平台界面" class="phone-display">
+                    </div>
+                </div>
+
+                <!-- CTA转化区域 - 整体框 -->
+                <div class="hero-cta-box">
+                    <h2 class="cta-title">限時體驗</h2>
+                    <p class="cta-subtitle">老闆們別再親自熬夜寫文案了，把引流交給AI</p>
+                    <p class="cta-description">30秒生成原創爆款圖文、短片，防封號技術護航，小白也能輕鬆上手。</p>
+                    <p class="cta-action">點擊下方按鈕添加客服，領取 AI 自動獲客免費體驗名額</p>
+
+                    <div class="hero-contact-buttons">
+                        <!-- WhatsApp按钮 -->
+                        <a href="https://wa.me/8618807585199" class="hero-btn whatsapp">
+                            <!-- WhatsApp SVG图标 -->
+                            <svg width="32" height="32" viewBox="0 0 48 48" style="margin-right: 15px;">
+                                <rect width="48" height="48" rx="12" fill="white" fill-opacity="0.2"/>
+                                <path d="M24 8C15.163 8 8 15.163 8 24c0 2.831.739 5.49 2.032 7.794L8.5 39.5l8.006-1.532A15.936 15.936 0 0024 40c8.837 0 16-7.163 16-16S32.837 8 24 8zm0 29c-2.485 0-4.813-.696-6.794-1.903l-.487-.293-5.054.967.967-5.054-.293-.487A12.94 12.94 0 0111 24c0-7.18 5.82-13 13-13s13 5.82 13 13-5.82 13-13 13z" fill="white"/>
+                                <path d="M19.5 17.5c-.3-.6-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 3.9 1.6 4.2c.2.3 2.8 4.3 6.8 6 3.3 1.4 4 1.1 4.7 1 .7-.1 2.3-.9 2.6-1.8.3-.9.3-1.6.2-1.8-.1-.2-.4-.3-.8-.5s-2.3-1.1-2.7-1.3c-.3-.1-.6-.2-.8.2-.3.4-1.1 1.3-1.3 1.6-.2.3-.5.3-.9.1s-1.7-.6-3.2-2c-1.2-1.1-2-2.4-2.2-2.8-.2-.4 0-.6.2-.8.2-.2.4-.5.6-.7.2-.2.3-.4.4-.6.1-.3.1-.5 0-.7-.1-.2-.8-2-1.1-2.7z" fill="white"/>
+                            </svg>
+                            <span class="hero-btn-text">點擊添加WhatsApp</span>
+                        </a>
+                        
+                        <!-- LINE按钮 -->
+                        <a href="https://line.me/ti/p/PfhPUB2fTj" class="hero-btn line">
+                            <!-- LINE SVG图标 - 白色圆形背景 -->
+                            <svg width="32" height="32" viewBox="0 0 48 48" style="margin-right: 15px;">
+                                <circle cx="24" cy="24" r="22" fill="white"/>
+                                <path d="M24 12C16.268 12 10 17.373 10 24c0 5.36 4.268 9.893 10.125 11.36v3.92c0 .25.27.375.428.2l2.946-2.946c.134-.134.313-.214.495-.214h.631C30.732 36.32 38 30.947 38 24c0-6.627-5.268-12-14-12zm-5.625 13.125h-2.25c-.202 0-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375s.375.173.375.375v4.875h1.875c.202 0 .375.173.375.375s-.173.375-.375.375zm2.625 0c-.202 0-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375s.375.173.375.375v5.25c0 .202-.173.375-.375.375zm5.25 0h-2.25c-.202 0-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375s.375.173.375.375v4.875h1.875c.202 0 .375.173.375.375s-.173.375-.375.375zm4.875 0c-.202 0-.375-.173-.375-.375v-4.035l-2.138 4.275c-.067.135-.202.225-.352.225h-.27c-.15 0-.285-.09-.352-.225L23.5 20.715v4.035c0 .202-.173.375-.375.375s-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375h.27c.15 0 .285.09.352.225L26 23.91l2.003-4.185c.067-.135.202-.225.352-.225h.27c.202 0 .375.173.375.375v5.25c0 .202-.173.375-.375.375z" fill="#00B900"/>
+                            </svg>
+                            <span class="hero-btn-text hero-btn-text-line">點擊添加 LINE 立即諮詢</span>
+                        </a>
+                    </div>
+
+                    <p class="hero-footer">名額有限，先到先得，立即諮詢 AI 神器開通</p>
+                </div>
+            </section>
+
+            <!-- 第一部分：为什么选择 -->
+            <section class="section-title">
+                <h2>🔥 為什麼老闆們都在瘋搶小雞說AI？🔥</h2>
+                <p>告別傳統獲客方式，用AI智能技術打造自動化營銷矩陣</p>
+            </section>
+
+            <div class="cards-grid">
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>手機即終端</h3>
+                        <p>告別繁瑣的電腦操作，一部手機就能隨時隨地完成營銷運營，讓碎片化時間變現</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>爆款不靠運</h3>
+                        <p>拒絕盲目原創。AI智能分析爆款內容並提煉密碼，30秒為你生成專屬高轉化內容</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>AI智能生圖</h3>
+                        <p>不會設計？一句文案秒出精美配圖，更支持一鍵提取商品信息，自動生成營銷素材</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>深度去重防封</h3>
+                        <p>獨家AI底層邏輯重構，規避平台風險。保護你的賬號資產，存活率大幅提升</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>0基礎新手友好</h3>
+                        <p>傻瓜式操作，打開即用。不強求文筆，不必懂排版，讓AI成為24小時全天候的免費助理</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>保姆級陪跑服務</h3>
+                        <p>不僅提供工具，更教你怎麼賺錢。內置0到1實戰運營課程，更有專屬社群答疑與大咖直播賦能</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 第二部分：核心功能 -->
+            <section class="section-title">
+                <h2>💎 AI黑科技功能矩陣，讓你躺著賺錢！💎</h2>
+                <p>從靈感挖掘、AI自動創作、矩陣鋪量到防封號處理，打造全鏈路獲客閉環</p>
+            </section>
+
+            <div class="cards-grid">
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>靈感引擎</h3>
+                        <p>一鍵搜索全網各行業爆款內容，自動提煉爆款元素與素材，徹底告別靈感枯竭</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>一鍵爆款克隆</h3>
+                        <p>複製同行爆款鏈接，AI智能分析標題、框架與關鍵詞，一鍵生成高轉化原創內容</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>AI智能生圖</h3>
+                        <p>不會設計也能做爆款。只需一句文案，AI模型自動為你生成多張高清原創配圖</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>拍照種草專家</h3>
+                        <p>有產品就能賣。手機拍照上傳產品圖，AI自動提取賣點，極速生成種草海報與文案</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>爆款視頻工廠</h3>
+                        <p>無需拍攝剪輯，只需粘貼商品鏈接，AI提取賣點並在10秒內產出高質感帶貨短視頻</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>深度防封處理</h3>
+                        <p>採用獨家AI源創與深度去重技術，規避平台違規風險，保護你的矩陣賬號安全</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>全自動矩陣支持</h3>
+                        <p>打破低效發布模式，極簡發布流程讓你1分鐘發多號，真正實現量大出奇蹟</p>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-card-content">
+                        <h3>內嵌實戰課程</h3>
+                        <p>工具內置從0到1獲客教學到最新防封技巧，不僅給工具，更教你運營思路</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>

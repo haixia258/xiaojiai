@@ -1,0 +1,42 @@
+<svg width="1100" height="420" viewBox="0 0 1100 420" xmlns="http://www.w3.org/2000/svg">
+  <!-- 左侧图标部分 -->
+  <g transform="translate(70, 70)">
+    <!-- 外圆环 - 粗粉红色 -->
+    <circle cx="135" cy="135" r="122" fill="none" stroke="#E91E63" stroke-width="20"/>
+    
+    <!-- 小鸡身体（圆形） - 粉红色 -->
+    <circle cx="135" cy="108" r="52" fill="#E91E63"/>
+    
+    <!-- 小鸡眼睛（白点在左上角） -->
+    <circle cx="120" cy="92" r="15" fill="white"/>
+    
+    <!-- 小鸡嘴巴（右侧小三角尖） -->
+    <polygon points="175,108 196,101 196,115" fill="#E91E63"/>
+    
+    <!-- 钥匙柄（两条细竖线） -->
+    <rect x="125" y="160" width="7" height="68" fill="#E91E63"/>
+    <rect x="140" y="160" width="7" height="68" fill="#E91E63"/>
+    
+    <!-- 钥匙齿底座（右侧小矩形） - 粉红色 -->
+    <rect x="147" y="172" width="22" height="59" fill="#E91E63" rx="2"/>
+    
+    <!-- 钥匙齿（三个小黑色圆点在矩形上） -->
+    <circle cx="158" cy="187" r="6" fill="#1a1a1a"/>
+    <circle cx="158" cy="205" r="6" fill="#1a1a1a"/>
+    <circle cx="158" cy="223" r="6" fill="#1a1a1a"/>
+  </g>
+  
+  <!-- 右侧文字部分 -->
+  <g transform="translate(390, 110)">
+    <!-- 小鸡说AI 中文文字 - 灰色斜体粗体 -->
+    <text x="0" y="110" font-family="Arial Black, sans-serif" font-size="115" font-weight="900" fill="#5a5a5a" font-style="italic" letter-spacing="7">
+      小鸡说AI
+    </text>
+    
+    <!-- 英文 XIAOJIAI - 深灰色背景框 -->
+    <rect x="0" y="145" width="630" height="78" fill="#4a4a4a" rx="7"/>
+    <text x="315" y="202" font-family="Arial, sans-serif" font-size="56" font-weight="700" fill="white" text-anchor="middle" letter-spacing="36">
+      XIAOJIAI
+    </text>
+  </g>
+</svg>
