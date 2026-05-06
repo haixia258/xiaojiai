@@ -478,6 +478,14 @@
         .hero-btn-text {
             font-size: 20px;
         }
+        
+        .hero-btn svg {
+            pointer-events: none;
+        }
+        
+        .hero-btn span {
+            pointer-events: none;
+        }
 
         .hero-footer {
             font-size: 16px;
@@ -1606,29 +1614,39 @@
         
         // 页面加载完成后绑定事件
         window.addEventListener('DOMContentLoaded', function() {
-            // 绑定WhatsApp按钮
+            console.log('[Analytics] 用户行为追踪已启动');
+            
+            // 绑定WhatsApp按钮 - 不阻止默认行为，只追踪
             var whatsappButtons = document.querySelectorAll('a[href*="wa.me"]');
             whatsappButtons.forEach(function(btn) {
+                // 添加touchstart事件以提高移动端响应
+                btn.addEventListener('touchstart', function() {
+                    btn.style.transform = 'translateY(-2px)';
+                });
+                btn.addEventListener('touchend', function() {
+                    btn.style.transform = '';
+                });
                 btn.addEventListener('click', function(e) {
+                    console.log('[Analytics] WhatsApp按钮被点击');
                     trackWhatsAppClick();
-                    // 确保移动端能正常跳转
-                    var href = btn.getAttribute('href');
-                    if (href) {
-                        window.location.href = href;
-                    }
+                    // 不阻止默认行为，让浏览器自然跳转
                 });
             });
             
-            // 绑定LINE按钮
+            // 绑定LINE按钮 - 不阻止默认行为，只追踪
             var lineButtons = document.querySelectorAll('a[href*="line.me"]');
             lineButtons.forEach(function(btn) {
+                // 添加touchstart事件以提高移动端响应
+                btn.addEventListener('touchstart', function() {
+                    btn.style.transform = 'translateY(-2px)';
+                });
+                btn.addEventListener('touchend', function() {
+                    btn.style.transform = '';
+                });
                 btn.addEventListener('click', function(e) {
+                    console.log('[Analytics] LINE按钮被点击');
                     trackLineClick();
-                    // 确保移动端能正常跳转
-                    var href = btn.getAttribute('href');
-                    if (href) {
-                        window.location.href = href;
-                    }
+                    // 不阻止默认行为，让浏览器自然跳转
                 });
             });
             
@@ -1648,7 +1666,6 @@
                 });
             }
             
-            console.log('[Analytics] 用户行为追踪已启动');
             console.log('[Analytics] 找到 ' + whatsappButtons.length + ' 个WhatsApp按钮');
             console.log('[Analytics] 找到 ' + lineButtons.length + ' 个LINE按钮');
         });
