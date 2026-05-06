@@ -1,134 +1,58 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 250" width="1000" height="250">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 450" width="1100" height="450">
   <defs>
     <style>
-      .logo-pink { fill: #ff2a6d; }
-      .logo-stroke { stroke: #ff2a6d; stroke-width: 4; fill: none; stroke-linecap: square; stroke-linejoin: miter; }
-      .logo-text { fill: #ff2a6d; font-family: 'Arial Black', 'Microsoft YaHei', sans-serif; font-weight: 900; }
-      .logo-subtitle { fill: #ff2a6d; font-family: Arial, sans-serif; font-size: 20px; letter-spacing: 8px; font-weight: 300; }
+      .logo-pink { fill: #E91E63; }
+      .logo-gray { fill: #555555; }
+      .logo-white { fill: #FFFFFF; }
+      .logo-stroke-pink { stroke: #E91E63; stroke-width: 12; fill: none; stroke-linecap: round; }
     </style>
   </defs>
   
   <!-- 左侧钥匙图标 -->
-  <g transform="translate(80, 125)">
+  <g transform="translate(170, 225)">
     <!-- 外圆环 -->
-    <circle cx="0" cy="0" r="50" fill="none" stroke="#ff2a6d" stroke-width="8"/>
+    <circle cx="0" cy="0" r="140" fill="none" stroke="#E91E63" stroke-width="20"/>
     
-    <!-- 钥匙头部圆形 -->
-    <circle cx="0" cy="0" r="20" class="logo-pink"/>
+    <!-- 内圆环 -->
+    <circle cx="0" cy="0" r="100" class="logo-pink"/>
+    
+    <!-- 钥匙头部白色圆点 -->
+    <circle cx="0" cy="-30" r="25" class="logo-white"/>
     
     <!-- 钥匙柄主体 -->
-    <rect x="-8" y="18" width="16" height="45" class="logo-pink"/>
+    <rect x="-15" y="40" width="30" height="90" class="logo-pink" rx="5"/>
     
-    <!-- 钥匙齿 - 左侧 -->
-    <rect x="-8" y="63" width="6" height="8" class="logo-pink"/>
+    <!-- 钥匙齿孔1 -->
+    <circle cx="0" cy="70" r="8" fill="#000000"/>
     
-    <!-- 钥匙齿 - 右侧 -->
-    <rect x="2" y="63" width="6" height="8" class="logo-pink"/>
+    <!-- 钥匙齿孔2 -->
+    <circle cx="0" cy="95" r="8" fill="#000000"/>
     
-    <!-- 电路孔1 -->
-    <circle cx="0" cy="35" r="5" fill="#0a101f"/>
-    
-    <!-- 电路孔2 -->
-    <circle cx="0" cy="50" r="5" fill="#0a101f"/>
-    
-    <!-- 装饰电路线 - 左上 -->
-    <line x1="-55" y1="-25" x2="-35" y2="-25" class="logo-stroke" stroke-width="3"/>
-    <rect x="-58" y="-28" width="6" height="6" class="logo-pink"/>
-    
-    <!-- 装饰电路线 - 右上 -->
-    <line x1="35" y1="-25" x2="55" y2="-25" class="logo-stroke" stroke-width="3"/>
-    <rect x="52" y="-28" width="6" height="6" class="logo-pink"/>
+    <!-- 钥匙齿孔3 -->
+    <circle cx="0" cy="120" r="8" fill="#000000"/>
   </g>
   
-  <!-- 主文字区域 -->
-  <g transform="translate(180, 125)">
-    <!-- 小 字 - 科技风格 -->
-    <g>
-      <rect x="0" y="-55" width="10" height="65" class="logo-pink"/>
-      <rect x="-8" y="-30" width="26" height="10" class="logo-pink"/>
-      <rect x="0" y="-70" width="10" height="12" class="logo-pink"/>
-      <rect x="-5" y="-73" width="20" height="6" class="logo-pink"/>
-      <!-- 电路芯片装饰 -->
-      <rect x="3" y="-76" width="4" height="4" class="logo-pink"/>
-      <line x1="5" y1="-80" x2="5" y2="-76" class="logo-stroke" stroke-width="2"/>
-    </g>
+  <!-- 主文字：小鸡说AI - 灰色斜体科技风 -->
+  <g transform="translate(400, 280)">
+    <!-- 小 字 -->
+    <path d="M 0,-80 L 30,-50 L 30,20 L 0,-10 Z M 10,-60 L 50,-60 L 50,-40 L 10,-20 Z M 15,-100 L 25,-100 L 25,-80 L 15,-70 Z" class="logo-gray" transform="skewX(-10)"/>
     
-    <!-- 鸡 字 - 电路板风格 -->
-    <g transform="translate(60, 0)">
-      <!-- 主竖线 -->
-      <rect x="0" y="-60" width="10" height="70" class="logo-pink"/>
-      <!-- 横线1 -->
-      <rect x="-15" y="-40" width="40" height="8" class="logo-pink"/>
-      <!-- 横线2 -->
-      <rect x="-15" y="-15" width="40" height="8" class="logo-pink"/>
-      <!-- 右侧装饰 -->
-      <rect x="35" y="-50" width="20" height="6" class="logo-pink"/>
-      <rect x="35" y="-25" width="20" height="6" class="logo-pink"/>
-      <!-- 芯片 -->
-      <rect x="53" y="-53" width="5" height="5" class="logo-pink"/>
-      <rect x="53" y="-28" width="5" height="5" class="logo-pink"/>
-    </g>
+    <!-- 鸡 字 -->
+    <path d="M 80,-80 L 110,-50 L 110,20 L 80,-10 Z M 70,-50 L 120,-50 L 120,-30 L 70,-10 Z M 70,-10 L 120,-10 L 120,10 L 70,30 Z M 130,-70 L 160,-70 L 160,-50 L 130,-30 Z M 130,-30 L 160,-30 L 160,-10 L 130,10 Z" class="logo-gray" transform="skewX(-10)"/>
     
-    <!-- 说 字 - 电路风格 -->
-    <g transform="translate(140, 0)">
-      <!-- 左半部分 -->
-      <rect x="0" y="-60" width="10" height="70" class="logo-pink"/>
-      <rect x="-12" y="-38" width="34" height="8" class="logo-pink"/>
-      <rect x="-12" y="-12" width="34" height="8" class="logo-pink"/>
-      
-      <!-- 右半部分 - 口字框 -->
-      <rect x="35" y="-60" width="35" height="8" class="logo-pink"/>
-      <rect x="35" y="-60" width="8" height="40" class="logo-pink"/>
-      <rect x="62" y="-60" width="8" height="40" class="logo-pink"/>
-      <rect x="35" y="-28" width="35" height="8" class="logo-pink"/>
-      
-      <!-- 下半口字 -->
-      <rect x="35" y="-12" width="35" height="8" class="logo-pink"/>
-      <rect x="35" y="-12" width="8" height="22" class="logo-pink"/>
-      <rect x="62" y="-12" width="8" height="22" class="logo-pink"/>
-      <rect x="35" y="2" width="35" height="8" class="logo-pink"/>
-      
-      <!-- 芯片装饰 -->
-      <rect x="67" y="-63" width="5" height="5" class="logo-pink"/>
-      <rect x="67" y="-15" width="5" height="5" class="logo-pink"/>
-      <rect x="67" y="8" width="5" height="5" class="logo-pink"/>
-    </g>
+    <!-- 说 字 -->
+    <path d="M 190,-80 L 220,-50 L 220,20 L 190,-10 Z M 180,-50 L 230,-50 L 230,-30 L 180,-10 Z M 180,-10 L 230,-10 L 230,10 L 180,30 Z M 250,-80 L 320,-80 L 320,-60 L 250,-40 Z M 250,-80 L 270,-60 L 270,-20 L 250,0 Z M 300,-80 L 320,-60 L 320,-20 L 300,0 Z M 250,-40 L 320,-40 L 320,-20 L 250,0 Z M 250,0 L 320,0 L 320,20 L 250,40 Z M 250,0 L 270,20 L 270,40 L 250,60 Z M 300,0 L 320,20 L 320,40 L 300,60 Z M 250,40 L 320,40 L 320,60 L 250,80 Z" class="logo-gray" transform="skewX(-10)"/>
     
-    <!-- AI 文字 -->
-    <text x="330" y="10" class="logo-text" font-size="85" letter-spacing="5">AI</text>
-    
-    <!-- 顶部电路线 -->
-    <line x1="-20" y1="-75" x2="450" y2="-75" class="logo-stroke" stroke-width="2.5"/>
-    <rect x="80" y="-78" width="5" height="5" class="logo-pink"/>
-    <rect x="180" y="-78" width="5" height="5" class="logo-pink"/>
-    <rect x="280" y="-78" width="5" height="5" class="logo-pink"/>
-    <rect x="380" y="-78" width="5" height="5" class="logo-pink"/>
-    
-    <!-- 底部电路线 -->
-    <line x1="-20" y1="25" x2="450" y2="25" class="logo-stroke" stroke-width="2.5"/>
-    <rect x="50" y="22" width="5" height="5" class="logo-pink"/>
-    <rect x="150" y="22" width="5" height="5" class="logo-pink"/>
-    <rect x="250" y="22" width="5" height="5" class="logo-pink"/>
-    <rect x="350" y="22" width="5" height="5" class="logo-pink"/>
-    
-    <!-- 电路连接线装饰 -->
-    <line x1="82" y1="-75" x2="82" y2="-65" class="logo-stroke" stroke-width="2"/>
-    <line x1="282" y1="-75" x2="282" y2="-65" class="logo-stroke" stroke-width="2"/>
-    <line x1="152" y1="25" x2="152" y2="15" class="logo-stroke" stroke-width="2"/>
-    <line x1="352" y1="25" x2="352" y2="15" class="logo-stroke" stroke-width="2"/>
+    <!-- AI 文字 - 灰色粗体 -->
+    <text x="350" y="20" font-family="Arial Black, sans-serif" font-size="120" font-weight="900" class="logo-gray" letter-spacing="10" transform="skewX(-10)">AI</text>
   </g>
   
-  <!-- 拼音 XIAO JI AI -->
-  <text x="180" y="190" class="logo-subtitle">XIAO JI AI</text>
-  
-  <!-- 右侧电路装饰 -->
-  <g transform="translate(850, 125)">
-    <line x1="0" y1="-40" x2="40" y2="-40" class="logo-stroke" stroke-width="3"/>
-    <line x1="40" y1="-40" x2="40" y2="0" class="logo-stroke" stroke-width="3"/>
-    <line x1="40" y1="0" x2="70" y2="0" class="logo-stroke" stroke-width="3"/>
-    <rect x="68" y="-3" width="6" height="6" class="logo-pink"/>
-    <rect x="37" y="-43" width="6" height="6" class="logo-pink"/>
-    <line x1="40" y1="-20" x2="60" y2="-20" class="logo-stroke" stroke-width="3"/>
-    <rect x="58" y="-23" width="6" height="6" class="logo-pink"/>
+  <!-- 底部拼音框 XIAOJAI -->
+  <g transform="translate(400, 370)">
+    <!-- 背景框 -->
+    <rect x="0" y="0" width="620" height="60" fill="#333333" rx="5"/>
+    
+    <!-- 拼音文字 -->
+    <text x="310" y="42" font-family="Arial, sans-serif" font-size="38" font-weight="400" class="logo-white" text-anchor="middle" letter-spacing="35">XIAOJAI</text>
   </g>
 </svg>
