@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>小鸡说AI - 智能营销获客神器</title>    
+    <title>小鸡说AI - 智能营销获客神器</title>
+    
     <!-- 百度统计 -->
     <script>
     var _hmt = _hmt || [];
@@ -14,7 +15,6 @@
       s.parentNode.insertBefore(hm, s);
     })();
     </script>
-
     <style>
         * {
             margin: 0;
@@ -369,6 +369,7 @@
             height: 200%;
             background: radial-gradient(circle, rgba(233, 30, 99, 0.05) 0%, transparent 70%);
             animation: rotate 15s linear infinite;
+            pointer-events: none;
         }
 
         @keyframes rotate {
@@ -434,6 +435,8 @@
             gap: 20px;
             max-width: 700px;
             margin: 0 auto 30px;
+            position: relative;
+            z-index: 10;
         }
 
         .hero-btn {
@@ -449,12 +452,22 @@
             font-weight: 700;
             transition: all 0.3s ease;
             box-shadow: 0 10px 35px rgba(74, 222, 128, 0.4);
+            position: relative;
+            z-index: 10;
+            cursor: pointer;
+            -webkit-tap-highlight-color: rgba(74, 222, 128, 0.3);
+            touch-action: manipulation;
         }
 
-        .hero-btn:hover {
+        .hero-btn:hover,
+        .hero-btn:active {
             transform: translateY(-5px);
             box-shadow: 0 15px 45px rgba(74, 222, 128, 0.6);
             background: #3BC970;
+        }
+        
+        .hero-btn:active {
+            transform: translateY(-2px);
         }
 
         .hero-btn-icon {
@@ -1394,7 +1407,7 @@
 
                     <div class="hero-contact-buttons">
                         <!-- WhatsApp按钮 -->
-                        <a href="https://wa.me/8618807585199" class="hero-btn whatsapp">
+                        <a href="https://wa.me/8618807585199" target="_blank" rel="noopener noreferrer" class="hero-btn whatsapp">
                             <!-- WhatsApp SVG图标 -->
                             <svg width="32" height="32" viewBox="0 0 48 48" style="margin-right: 15px;">
                                 <rect width="48" height="48" rx="12" fill="white" fill-opacity="0.2"/>
@@ -1405,7 +1418,7 @@
                         </a>
                         
                         <!-- LINE按钮 -->
-                        <a href="https://line.me/ti/p/PfhPUB2fTj" class="hero-btn line">
+                        <a href="https://line.me/ti/p/PfhPUB2fTj" target="_blank" rel="noopener noreferrer" class="hero-btn line">
                             <!-- LINE SVG图标 - 白色圆形背景 -->
                             <svg width="32" height="32" viewBox="0 0 48 48" style="margin-right: 15px;">
                                 <circle cx="24" cy="24" r="22" fill="white"/>
@@ -1479,20 +1492,20 @@
                 <div class="feature-card">
                     <div class="feature-card-content">
                         <h3>靈感引擎</h3>
-                        <p>一键搜索全网各行业爆款内容，自动提炼爆款元素与素材，彻底告别灵感枯竭</p>
+                        <p>一鍵搜索全網各行業爆款內容，自動提煉爆款元素與素材，徹底告別靈感枯竭</p>
                     </div>
                 </div>
 
-                <div 类="特色卡片">
+                <div class="feature-card">
                     <div class="feature-card-content">
-                        <h3>一键爆款克隆</h3>
-                        <p>复制同行爆款链接，AI智能分析标题、框架与关键词，一键生成高转化原创内容</p>
+                        <h3>一鍵爆款克隆</h3>
+                        <p>複製同行爆款鏈接，AI智能分析標題、框架與關鍵詞，一鍵生成高轉化原創內容</p>
                     </div>
                 </div>
 
-                <div 类="特色卡片">
+                <div class="feature-card">
                     <div class="feature-card-content">
-                        <h3>AI智能生图</h3>
+                        <h3>AI智能生圖</h3>
                         <p>不會設計也能做爆款。只需一句文案，AI模型自動為你生成多張高清原創配圖</p>
                     </div>
                 </div>
@@ -1534,50 +1547,112 @@
             </div>
         </div>
     </main>
-</body>    
+    
     <!-- 自定义用户行为追踪 -->
     <script>
+    // 小鸡AI - 用户行为分析追踪
     (function() {
+        'use strict';
+        
+        // 追踪WhatsApp按钮点击
         function trackWhatsAppClick() {
-            if (window._hmt) _hmt.push(['_trackEvent', '按钮点击', 'WhatsApp', '联系客服']);
+            if (window._hmt) {
+                _hmt.push(['_trackEvent', '按钮点击', 'WhatsApp', '联系客服']);
+            }
             console.log('[Analytics] WhatsApp按钮被点击');
         }
         
+        // 追踪LINE按钮点击
         function trackLineClick() {
-            if(window._hmt)_hmt.push(['_trackEvent','按钮点击','LINE','联系客服']);  
-            控制台.日志('[分析] 线按钮被点击');
+            if (window._hmt) {
+                _hmt.push(['_trackEvent', '按钮点击', 'LINE', '联系客服']);
+            }
+            console.log('[Analytics] LINE按钮被点击');
         }
         
+        // 追踪手机图片hover
+        function trackPhoneHover(side) {
+            if (window._hmt) {
+                _hmt.push(['_trackEvent', '用户交互', '手机hover', side]);
+            }
+            console.log('[Analytics] 手机' + side + '被hover');
+        }
+        
+        // 追踪页面停留时间
         var startTime = Date.now();
-        窗口.添加事件监听器('beforeunload', 函数() {
+        window.addEventListener('beforeunload', function() {
             var timeSpent = Math.round((Date.now() - startTime) / 1000);
-             (窗口_hmt 且 时间花费 > 3) {
+            if (window._hmt && timeSpent > 3) {
                 _hmt.push(['_trackEvent', '用户行为', '停留时间', '秒', timeSpent]);
             }
         });
         
-        滚动跟踪 =  {};
-        窗口.addEventListener('滚动', 函数() {
-            var scrollPercent = Math.round((窗口.滚动Y / (文档.文档元素.滚动高度 - 窗口.内部高度))100)
-            [25, 50, 75, 100].forEach(function( {
-                如果 (滚动百分比 >= 里程碑 && !滚动已跟踪[里程碑]) {
-                    滚动跟踪[里程碑] = 真
-                    ifwindow) _hmt.push(['_trackEvent','用户行为','滚动深度', milestone + '%']);
+        // 追踪滚动深度
+        var scrollTracked = {};
+        window.addEventListener('scroll', function() {
+            var scrollPercent = Math.round(
+                (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100
+            );
+            
+            [25, 50, 75, 100].forEach(function(milestone) {
+                if (scrollPercent >= milestone && !scrollTracked[milestone]) {
+                    scrollTracked[milestone] = true;
+                    if (window._hmt) {
+                        _hmt.push(['_trackEvent', '用户行为', '滚动深度', milestone + '%']);
+                    }
                 }
             });
         });
         
-        窗口.添加事件监听器('DOMContentLoaded', 函数() {
-            文档.querySelectorAll('a[href*="wa.me"]').forEach(函数(按钮) {
-                btn.addEventListener('click', trackWhatsAppClick);
+        // 页面加载完成后绑定事件
+        window.addEventListener('DOMContentLoaded', function() {
+            // 绑定WhatsApp按钮
+            var whatsappButtons = document.querySelectorAll('a[href*="wa.me"]');
+            whatsappButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    trackWhatsAppClick();
+                    // 确保移动端能正常跳转
+                    var href = btn.getAttribute('href');
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
             });
-            文档querySelectorAll('a[href*="line.me"]').forEach(函数(按钮) {
-                btn.addEventListener('click', trackLineClick);
+            
+            // 绑定LINE按钮
+            var lineButtons = document.querySelectorAll('a[href*="line.me"]');
+            lineButtons.forEach(function(btn) {
+                btn.addEventListener('click', function(e) {
+                    trackLineClick();
+                    // 确保移动端能正常跳转
+                    var href = btn.getAttribute('href');
+                    if (href) {
+                        window.location.href = href;
+                    }
+                });
             });
-            控制台.日志('[分析] 用户行为追踪已启动');
+            
+            // 绑定手机hover
+            var phoneLeft = document.querySelector('.phone-left');
+            var phoneRight = document.querySelector('.phone-right');
+            
+            if (phoneLeft) {
+                phoneLeft.addEventListener('mouseenter', function() {
+                    trackPhoneHover('左侧');
+                });
+            }
+            
+            if (phoneRight) {
+                phoneRight.addEventListener('mouseenter', function() {
+                    trackPhoneHover('右侧');
+                });
+            }
+            
+            console.log('[Analytics] 用户行为追踪已启动');
+            console.log('[Analytics] 找到 ' + whatsappButtons.length + ' 个WhatsApp按钮');
+            console.log('[Analytics] 找到 ' + lineButtons.length + ' 个LINE按钮');
         });
     })();
-    </脚本
-
-
-
+    </script>
+</body>
+</html>
