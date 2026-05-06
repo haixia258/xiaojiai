@@ -1,70 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 300" width="1100" height="300">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320">
   <defs>
     <style>
-      .key-pink { fill: #E91E63; }
-      .text-gray { fill: #555555; }
-      .text-white { fill: #FFFFFF; }
-      .bg-dark { fill: #333333; }
+      .logo-pink { fill: #E91E63; }
+      .logo-white { fill: #FFFFFF; }
+      .glitch { fill: #E91E63; }
     </style>
+    <!-- 故障效果滤镜 -->
+    <filter id="glitch">
+      <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="1" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
   </defs>
   
   <!-- 左侧钥匙图标 -->
-  <g transform="translate(150, 150)">
+  <g transform="translate(160, 160)">
     <!-- 外圆环 -->
-    <circle cx="0" cy="0" r="130" fill="none" stroke="#E91E63" stroke-width="20"/>
+    <circle cx="0" cy="0" r="140" fill="none" stroke="#E91E63" stroke-width="22"/>
     
     <!-- 内部填充圆 -->
-    <circle cx="0" cy="0" r="110" class="key-pink"/>
+    <circle cx="0" cy="0" r="118" class="logo-pink"/>
     
     <!-- 钥匙头部 - 白色圆形 -->
-    <circle cx="0" cy="-30" r="32" class="text-white"/>
+    <circle cx="0" cy="-35" r="38" class="logo-white"/>
     
     <!-- 钥匙柄 -->
-    <rect x="-16" y="28" width="32" height="95" class="text-white" rx="3"/>
+    <rect x="-18" y="30" width="36" height="105" class="logo-white" rx="4"/>
     
     <!-- 钥匙柄上的孔1 -->
-    <circle cx="0" cy="55" r="9" class="key-pink"/>
+    <circle cx="0" cy="60" r="10" class="logo-pink"/>
     
     <!-- 钥匙柄上的孔2 -->
-    <circle cx="0" cy="80" r="9" class="key-pink"/>
+    <circle cx="0" cy="90" r="10" class="logo-pink"/>
     
     <!-- 钥匙柄上的孔3 -->
-    <circle cx="0" cy="105" r="9" class="key-pink"/>
+    <circle cx="0" cy="115" r="10" class="logo-pink"/>
   </g>
   
-  <!-- 主文字：小鸡说AI - 灰色斜体科技风 -->
-  <g transform="translate(350, 150)">
-    <g transform="skewX(-10)">
-      <!-- 小 字 -->
-      <path d="M 0,-55 L 10,-55 L 10,25 L 0,25 Z M -6,-28 L 16,-28 L 16,-20 L -6,-20 Z M 0,-70 L 10,-70 L 10,-55 L 0,-55 Z M -4,-73 L 14,-73 L 14,-67 L -4,-67 Z" class="text-gray"/>
-      <rect x="11" y="-57" width="3" height="3" class="text-gray"/>
+  <!-- 主文字：小鸡说AI - 粉色故障风格 -->
+  <g transform="translate(380, 170)">
+    <!-- 使用斜体变换 -->
+    <g transform="skewX(-12)">
+      <!-- 小 字 - 粗壮版本 -->
+      <path d="M 0,-70 L 18,-70 L 18,35 L 0,35 Z M -10,-35 L 28,-35 L 28,-20 L -10,-20 Z M 0,-90 L 18,-90 L 18,-70 L 0,-70 Z M -6,-95 L 24,-95 L 24,-87 L -6,-87 Z" class="glitch" filter="url(#glitch)"/>
+      <!-- 故障线条 -->
+      <rect x="19" y="-72" width="8" height="3" class="glitch"/>
+      <rect x="19" y="-50" width="5" height="2" class="glitch"/>
       
-      <!-- 鸡 字 -->
-      <path d="M 45,-55 L 55,-55 L 55,25 L 45,25 Z M 37,-32 L 63,-32 L 63,-24 L 37,-24 Z M 37,-8 L 63,-8 L 63,0 L 37,0 Z M 70,-48 L 90,-48 L 90,-40 L 70,-40 Z M 70,-22 L 90,-22 L 90,-14 L 70,-14 Z" class="text-gray"/>
-      <rect x="91" y="-50" width="3" height="3" class="text-gray"/>
-      <rect x="91" y="-24" width="3" height="3" class="text-gray"/>
+      <!-- 鸡 字 - 粗壮版本 -->
+      <g transform="translate(60, 0)">
+        <path d="M 0,-70 L 18,-70 L 18,35 L 0,35 Z M -12,-40 L 30,-40 L 30,-25 L -12,-25 Z M -12,-8 L 30,-8 L 30,7 L -12,7 Z M 40,-60 L 70,-60 L 70,-45 L 40,-45 Z M 40,-28 L 70,-28 L 70,-13 L 40,-13 Z" class="glitch" filter="url(#glitch)"/>
+        <rect x="71" y="-62" width="6" height="3" class="glitch"/>
+        <rect x="71" y="-30" width="6" height="3" class="glitch"/>
+      </g>
       
-      <!-- 说 字 -->
-      <path d="M 115,-55 L 125,-55 L 125,25 L 115,25 Z M 107,-32 L 133,-32 L 133,-24 L 107,-24 Z M 107,-8 L 133,-8 L 133,0 L 107,0 Z" class="text-gray"/>
-      <!-- 口字旁上 -->
-      <path d="M 145,-60 L 185,-60 L 185,-52 L 145,-52 Z M 145,-60 L 153,-60 L 153,-28 L 145,-28 Z M 177,-60 L 185,-60 L 185,-28 L 177,-28 Z M 145,-36 L 185,-36 L 185,-28 L 145,-28 Z" class="text-gray"/>
-      <!-- 口字旁下 -->
-      <path d="M 145,-5 L 185,-5 L 185,3 L 145,3 Z M 145,-5 L 153,-5 L 153,27 L 145,27 Z M 177,-5 L 185,-5 L 185,27 L 177,27 Z M 145,19 L 185,19 L 185,27 L 145,27 Z" class="text-gray"/>
-      <rect x="186" y="-62" width="3" height="3" class="text-gray"/>
-      <rect x="186" y="-7" width="3" height="3" class="text-gray"/>
-      <rect x="186" y="28" width="3" height="3" class="text-gray"/>
+      <!-- 说 字 - 粗壮版本 -->
+      <g transform="translate(150, 0)">
+        <path d="M 0,-70 L 18,-70 L 18,35 L 0,35 Z M -12,-40 L 30,-40 L 30,-25 L -12,-25 Z M -12,-8 L 30,-8 L 30,7 L -12,7 Z" class="glitch" filter="url(#glitch)"/>
+        <!-- 口字旁上 -->
+        <path d="M 45,-75 L 95,-75 L 95,-60 L 45,-60 Z M 45,-75 L 58,-75 L 58,-35 L 45,-35 Z M 82,-75 L 95,-75 L 95,-35 L 82,-35 Z M 45,-48 L 95,-48 L 95,-35 L 45,-35 Z" class="glitch" filter="url(#glitch)"/>
+        <!-- 口字旁下 -->
+        <path d="M 45,-8 L 95,-8 L 95,7 L 45,7 Z M 45,-8 L 58,-8 L 58,32 L 45,32 Z M 82,-8 L 95,-8 L 95,32 L 82,32 Z M 45,19 L 95,19 L 95,32 L 45,32 Z" class="glitch" filter="url(#glitch)"/>
+        <!-- 故障线条 -->
+        <rect x="96" y="-77" width="8" height="3" class="glitch"/>
+        <rect x="96" y="-10" width="8" height="3" class="glitch"/>
+        <rect x="96" y="33" width="8" height="3" class="glitch"/>
+        <line x1="100" y1="-80" x2="100" y2="-77" stroke="#E91E63" stroke-width="2"/>
+      </g>
       
-      <!-- AI 文字 - 灰色粗体 -->
-      <text x="215" y="20" font-family="'Arial Black', sans-serif" font-size="110" font-weight="900" class="text-gray" letter-spacing="8">AI</text>
+      <!-- AI 文字 - 超粗体 -->
+      <text x="280" y="25" font-family="'Arial Black', 'Impact', sans-serif" font-size="130" font-weight="900" class="glitch" letter-spacing="10" filter="url(#glitch)">AI</text>
+      
+      <!-- 顶部电路线 -->
+      <line x1="-30" y1="-100" x2="500" y2="-100" stroke="#E91E63" stroke-width="3"/>
+      <rect x="80" y="-104" width="6" height="6" class="logo-pink"/>
+      <rect x="200" y="-104" width="6" height="6" class="logo-pink"/>
+      <rect x="320" y="-104" width="6" height="6" class="logo-pink"/>
+      <rect x="440" y="-104" width="6" height="6" class="logo-pink"/>
+      
+      <!-- 底部电路线 -->
+      <line x1="-30" y1="50" x2="500" y2="50" stroke="#E91E63" stroke-width="3"/>
+      <rect x="100" y="47" width="6" height="6" class="logo-pink"/>
+      <rect x="220" y="47" width="6" height="6" class="logo-pink"/>
+      <rect x="340" y="47" width="6" height="6" class="logo-pink"/>
     </g>
   </g>
   
-  <!-- 底部拼音框 XIAOJAI -->
-  <g transform="translate(350, 230)">
-    <!-- 背景框 -->
-    <rect x="0" y="0" width="650" height="55" class="bg-dark" rx="5"/>
-    
-    <!-- 拼音字母 -->
-    <text x="325" y="38" font-family="Arial, sans-serif" font-size="32" font-weight="400" class="text-white" text-anchor="middle" letter-spacing="38">X I A O J I A I</text>
+  <!-- 底部拼音 XIAO JI AI -->
+  <text x="380" y="270" font-family="Arial, sans-serif" font-size="28" font-weight="300" class="logo-pink" letter-spacing="35">X I A O J I A I</text>
+  
+  <!-- 右侧电路装饰 -->
+  <g transform="translate(1050, 160)">
+    <line x1="0" y1="-40" x2="40" y2="-40" stroke="#E91E63" stroke-width="3"/>
+    <line x1="40" y1="-40" x2="40" y2="15" stroke="#E91E63" stroke-width="3"/>
+    <line x1="40" y1="15" x2="70" y2="15" stroke="#E91E63" stroke-width="3"/>
+    <rect x="68" y="12" width="6" height="6" class="logo-pink"/>
+    <rect x="37" y="-43" width="6" height="6" class="logo-pink"/>
+    <line x1="40" y1="-15" x2="60" y2="-15" stroke="#E91E63" stroke-width="3"/>
+    <rect x="58" y="-18" width="6" height="6" class="logo-pink"/>
   </g>
 </svg>
