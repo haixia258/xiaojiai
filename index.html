@@ -1415,7 +1415,7 @@
 
                     <div class="hero-contact-buttons">
                         <!-- WhatsApp按钮 -->
-                        <a href="https://wa.me/8618807585199" target="_blank" rel="noopener noreferrer" class="hero-btn whatsapp">
+                        <a href="https://wa.me/8618807585199" target="_blank" rel="noopener noreferrer" class="hero-btn whatsapp" onclick="console.log('WhatsApp clicked'); return true;">
                             <!-- WhatsApp SVG图标 -->
                             <svg width="32" height="32" viewBox="0 0 48 48" style="margin-right: 15px;">
                                 <rect width="48" height="48" rx="12" fill="white" fill-opacity="0.2"/>
@@ -1426,13 +1426,22 @@
                         </a>
                         
                         <!-- LINE按钮 -->
-                        <a href="https://line.me/ti/p/PfhPUB2fTj" target="_blank" rel="noopener noreferrer" class="hero-btn line">
+                        <a href="https://line.me/ti/p/PfhPUB2fTj" target="_blank" rel="noopener noreferrer" class="hero-btn line" onclick="console.log('LINE clicked'); return true;">
                             <!-- LINE SVG图标 - 白色圆形背景 -->
                             <svg width="32" height="32" viewBox="0 0 48 48" style="margin-right: 15px;">
                                 <circle cx="24" cy="24" r="22" fill="white"/>
                                 <path d="M24 12C16.268 12 10 17.373 10 24c0 5.36 4.268 9.893 10.125 11.36v3.92c0 .25.27.375.428.2l2.946-2.946c.134-.134.313-.214.495-.214h.631C30.732 36.32 38 30.947 38 24c0-6.627-5.268-12-14-12zm-5.625 13.125h-2.25c-.202 0-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375s.375.173.375.375v4.875h1.875c.202 0 .375.173.375.375s-.173.375-.375.375zm2.625 0c-.202 0-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375s.375.173.375.375v5.25c0 .202-.173.375-.375.375zm5.25 0h-2.25c-.202 0-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375s.375.173.375.375v4.875h1.875c.202 0 .375.173.375.375s-.173.375-.375.375zm4.875 0c-.202 0-.375-.173-.375-.375v-4.035l-2.138 4.275c-.067.135-.202.225-.352.225h-.27c-.15 0-.285-.09-.352-.225L23.5 20.715v4.035c0 .202-.173.375-.375.375s-.375-.173-.375-.375v-5.25c0-.202.173-.375.375-.375h.27c.15 0 .285.09.352.225L26 23.91l2.003-4.185c.067-.135.202-.225.352-.225h.27c.202 0 .375.173.375.375v5.25c0 .202-.173.375-.375.375z" fill="#00B900"/>
                             </svg>
                             <span class="hero-btn-text hero-btn-text-line">點擊添加 LINE 立即諮詢</span>
+                        </a>
+                        
+                        <!-- 备用：直接显示电话号码 -->
+                        <a href="tel:+8618807585199" class="hero-btn phone-btn" style="background: #FF6B6B;">
+                            <svg width="32" height="32" viewBox="0 0 48 48" style="margin-right: 15px;">
+                                <circle cx="24" cy="24" r="22" fill="white"/>
+                                <path d="M14 10c-1.1 0-2 .9-2 2v24c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V12c0-1.1-.9-2-2-2H14zm10 28c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm8-6H16V14h16v18z" fill="#FF6B6B"/>
+                            </svg>
+                            <span class="hero-btn-text">撥打電話：+86 188 0758 5199</span>
                         </a>
                     </div>
 
