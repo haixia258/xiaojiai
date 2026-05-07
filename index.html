@@ -199,9 +199,44 @@
             }
         }
 
+        /* 顶部Logo区域 */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(233, 30, 99, 0.2);
+            box-shadow: 0 5px 30px rgba(233, 30, 99, 0.1);
+        }
+
+        .logo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .brand-logo {
+            height: 80px;
+            width: auto;
+            transition: all 0.3s ease;
+            filter: drop-shadow(0 0 15px rgba(233, 30, 99, 0.3));
+        }
+
+        .brand-logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 25px rgba(233, 30, 99, 0.5));
+        }
+
         /* 主要内容区域 */
         .main-content {
-            margin-top: 0;
+            margin-top: 120px;
             padding: 20px 20px 60px;
         }
 
@@ -1119,6 +1154,18 @@
 
         /* 响应式设计 */
         @media (max-width: 768px) {
+            .brand-logo {
+                height: 60px;
+            }
+
+            .header {
+                padding: 15px 0;
+            }
+
+            .main-content {
+                margin-top: 90px;
+            }
+
             .hero-title {
                 font-size: 28px;
                 margin-bottom: 20px;
@@ -1385,6 +1432,13 @@
     </style>
 </head>
 <body>
+    <!-- 顶部品牌Logo -->
+    <header class="header">
+        <div class="logo-container">
+            <img src="小鸡说AI.jpg" alt="小鸡说AI" class="brand-logo">
+        </div>
+    </header>
+
 <!-- 主要内容 -->
     <main class="main-content">
         <div class="container">
